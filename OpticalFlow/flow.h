@@ -16,7 +16,8 @@ class flow
         void RemoveStationaryPoint();
         bool IsMove(int i);
         void Draw(Mat& img);
-
+        int Direction(float x, float y);
+        void PrintDirection(int* direction);
     private:
         static flow* m_self;
 
