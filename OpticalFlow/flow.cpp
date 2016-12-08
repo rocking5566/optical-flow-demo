@@ -69,8 +69,7 @@ void flow::RemoveStationaryPoint()
 bool flow::IsMove(int i)
 {
     return status[i] &&
-		abs(m_CurCorner[i].x - m_PrevCorner[i].x) > TRUE_MOTION &&
-		abs(m_CurCorner[i].y - m_PrevCorner[i].y) > TRUE_MOTION;
+		abs(m_CurCorner[i].x - m_PrevCorner[i].x) + abs(m_CurCorner[i].y - m_PrevCorner[i].y) > TRUE_MOTION;
 }
 
 void flow::Draw(Mat& img)
