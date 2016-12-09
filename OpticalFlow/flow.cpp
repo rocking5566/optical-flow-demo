@@ -93,7 +93,7 @@ void flow::Draw(Mat& img)
     {
         line(img, m_StartCorner[i], m_CurCorner[i], Scalar::all(0));
         circle(img, m_CurCorner[i], 3, Scalar::all(0), (-1));
-       ++direction[Direction(m_CurCorner[i].x - m_StartCorner[i].x, m_CurCorner[i].y - m_StartCorner[i].y)];
+        ++direction[Direction(m_CurCorner[i].x - m_StartCorner[i].x, m_StartCorner[i].y - m_CurCorner[i].y)];
     }
 
     PrintDirection(direction);
