@@ -91,9 +91,14 @@ void flow::Draw(Mat& img)
     int direction[MAX_DIRECTION] = { 0 };
     for (int i = 0; i < m_CurCorner.size(); i++)
     {
+        int motionDirection = Direction(m_CurCorner[i].x - m_StartCorner[i].x, m_StartCorner[i].y - m_CurCorner[i].y);
         line(img, m_StartCorner[i], m_CurCorner[i], Scalar::all(0));
         circle(img, m_CurCorner[i], 3, Scalar::all(0), (-1));
-        ++direction[Direction(m_CurCorner[i].x - m_StartCorner[i].x, m_StartCorner[i].y - m_CurCorner[i].y)];
+        
+        if (motionDirection != -1)
+        {
+            ++direction[motionDirection];
+        }
     }
 
     PrintDirection(direction);
