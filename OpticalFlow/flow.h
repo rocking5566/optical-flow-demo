@@ -1,5 +1,6 @@
 #ifndef flow_h__
 #define flow_h__
+#define MAX_DIRECTION 8
 
 #include "opencv2/opencv.hpp"
 using namespace std;
@@ -12,6 +13,7 @@ class flow
 
         void run(const Mat& src, Mat& dst);
     private:
+        flow();
         ~flow();
         void RemoveStationaryPoint();
         bool IsMove(int i);
@@ -28,5 +30,6 @@ class flow
         vector<Point2f> m_StartCorner;
         vector<uchar> status;
         vector<float> err;
+        string m_dirName[MAX_DIRECTION];
 };
 #endif // flow_h__

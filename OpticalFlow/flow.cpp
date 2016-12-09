@@ -5,10 +5,21 @@
 #define CORNER_QUALITY 0.01
 #define CORNER_MIN_DIST 10.
 #define TRUE_MOTION 2
-#define MAX_DIRECTION 8
 #define PI 3.14159265
 
 flow* flow::m_self = NULL;
+
+flow::flow()
+{
+    m_dirName[0] = "Right";
+    m_dirName[1] = "Upper right";
+    m_dirName[2] = "Up";
+    m_dirName[3] = "Upper Left";
+    m_dirName[4] = "Left";
+    m_dirName[5] = "Lefter down";
+    m_dirName[6] = "Down";
+    m_dirName[7] = "Down left";
+}
 
 flow::~flow()
 {
@@ -90,7 +101,6 @@ void flow::Draw(Mat& img)
 
 int flow::Direction(float x, float y)
 {
-
     if (x == 0 && y == 0)
     {
         return -1;
@@ -101,45 +111,20 @@ int flow::Direction(float x, float y)
 
 void flow::PrintDirection(int* direction)
 {
-    if (direction[0] > 5)
-    {
-        cout << "R = " << direction[0] << " ";
-    }
-    if (direction[1] > 5)
-    {
-        cout << "UR = " << direction[1] << " ";
-    }
-    if (direction[2] > 5)
-    {
-        cout << "U = " << direction[2] << " ";
-    }
-    if (direction[3] > 5)
-    {
-        cout << "UL = " << direction[3] << " ";
-    }
-    if (direction[4] > 5)
-    {
-        cout << "L = " << direction[4] << " ";
-    }
-    if (direction[5] > 5)
-    {
-        cout << "LD = " << direction[5] << " ";
-    }
-    if (direction[6] > 5)
-    {
-        cout << "D = " << direction[6] << " ";
-    }
-    if (direction[7] > 5)
-    {
-        cout << "DL = " << direction[7] << " ";
-    }
+    int thr = 10;
+    bool bIsDetect = false;
     for (int i = 0; i < MAX_DIRECTION; ++i)
     {
-        if (direction[i] > 5)
+        if (direction[i] > thr)
         {
-            cout << endl;
-            break;
+            cout << m_dirName[i] << " = " << direction[i] << " ";
+            bIsDetect = true;
         }
+    }
+
+    if (bIsDetect)
+    {
+        cout << endl;
     }
 }
 
